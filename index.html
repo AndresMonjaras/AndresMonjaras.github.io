@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum - Andrés Monjaras</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-principal: #17324d;
+            --color-secundario: #2f6690;
+            --color-claro: #f4f7fa;
+            --color-texto: #2b2b2b;
+        }
+
+        body {
+            background-color: #e9eef3;
+            color: var(--color-texto);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .curriculum {
+            max-width: 1100px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .sidebar {
+            background-color: var(--color-principal);
+            color: #ffffff;
+            min-height: 100%;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            object-position: center;
+            border: 5px solid rgba(255, 255, 255, 0.85);
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 13px;
+            align-items: flex-start;
+        }
+
+        .contact-item i {
+            margin-top: 2px;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .main-title {
+            color: var(--color-principal);
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .profession {
+            color: var(--color-secundario);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: var(--color-principal);
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid var(--color-secundario);
+            padding-bottom: 8px;
+            margin-bottom: 22px;
+        }
+
+        .education-item,
+        .project-item {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 28px;
+            border-left: 2px solid #d7e0e8;
+        }
+
+        .education-item::before,
+        .project-item::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--color-secundario);
+        }
+
+        .item-title {
+            color: var(--color-principal);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .item-subtitle {
+            color: var(--color-secundario);
+            font-weight: 600;
+        }
+
+        .item-date {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 20px;
+            padding: 6px 12px;
+            margin: 4px 3px;
+            font-size: 0.88rem;
+        }
+
+        .language {
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .progress-bar {
+            background-color: #ffffff;
+        }
+
+        .technology-card {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            height: 100%;
+            background-color: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .technology-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .technology-card i {
+            color: var(--color-secundario);
+            font-size: 1.5rem;
+        }
+
+        .btn-print {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 1000;
+            border-radius: 50px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        @media print {
+            body { background-color: #ffffff; }
+            .curriculum { max-width: 100%; margin: 0; box-shadow: none; }
+            .btn-print { display: none; }
+            .sidebar { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .technology-card { break-inside: avoid; }
+        }
+
+        @media screen and (max-width: 767px) {
+            .curriculum { margin: 0; }
+            .main-title { font-size: 2rem; }
+            .sidebar { min-height: auto; }
+            .btn-print { right: 15px; bottom: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button type="button" class="btn btn-primary btn-print" onclick="window.print()">
+        <i class="bi bi-printer-fill me-2"></i> Imprimir CV
+    </button>
+
+    <main class="curriculum">
+        <div class="row g-0">
+
+            <!-- Columna izquierda -->
+            <aside class="col-md-4 sidebar p-4 p-lg-5">
+
+                <div class="text-center mb-5">
+                    
+                    <img src="https://avatars.githubusercontent.com/u/206648412?s=400&u=f833be2c8673e760f0b78158c165fd467bab6ee1&v=4" alt="Fotografía profesional" class="profile-img rounded-circle mb-3">
+                    <h2 class="h4 fw-bold mb-1">Andrés Monjaras</h2>
+                    <p class="mb-0 opacity-75">Ingeniero en Sistemas</p>
+                </div>
+
+                <!-- Contacto -->
+                <section class="mb-5">
+                    <h3 class="sidebar-title">Contacto</h3>
+                    <div class="contact-item">
+                        <i class="bi bi-envelope-fill"></i>
+                        <a href="mailto:22030873@itcelaya.edu.mx">22030873@itcelaya.edu.mx</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Celaya, Guanajuato, México</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-github"></i>
+                        <a href="https://github.com/AndresMonjaras" target="_blank">github.com/AndresMonjaras</a>
+                    </div>
+                </section>
+
+                <!-- Tecnologías -->
+                <section class="mb-5">
+                    <h3 class="sidebar-title">Tecnologías</h3>
+                    <span class="skill-badge">C# / .NET</span>
+                    <span class="skill-badge">PHP</span>
+                    <span class="skill-badge">Flutter & Dart</span>
+                    <span class="skill-badge">PostgreSQL</span>
+                    <span class="skill-badge">MySQL</span>
+                    <span class="skill-badge">MariaDB</span>
+                    <span class="skill-badge">SQLite</span>
+                    <span class="skill-badge">Git & GitHub</span>
+                    <span class="skill-badge">Docker</span>
+                    <span class="skill-badge">Linux (Pop!_OS)</span>
+                    <span class="skill-badge">REST APIs (cURL)</span>
+                    <span class="skill-badge">Nmap / Wfuzz</span>
+                </section>
+
+                <!-- Herramientas Empresariales -->
+                <section class="mb-5">
+                    <h3 class="sidebar-title">Herramientas Empresariales</h3>
+                    <span class="skill-badge">Power BI (ETL)</span>
+                    <span class="skill-badge">Excel (Tablas Dinámicas)</span>
+                    <span class="skill-badge">Postman / Bruno</span>
+                </section>
+
+                <!-- Idiomas -->
+                <section class="mb-5">
+                    <h3 class="sidebar-title">Idiomas</h3>
+                    
+                    <div class="language">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Español</span>
+                            <span>Nativo</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="language">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Inglés</span>
+                            <span>B2 (Intermedio-Avanzado)</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="language">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Alemán</span>
+                            <span>Básico A1</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Columna derecha -->
+            <section class="col-md-8 p-4 p-lg-5">
+
+                <!-- Encabezado -->
+                <header class="mb-5">
+                    <h1 class="main-title">Andrés Monjaras Ortega</h1>
+                    <p class="profession mb-3">Estudiante de Ingeniería en Sistemas Computacionales (9° Semestre)</p>
+                    <p class="text-secondary mb-0">
+                        Soy un Desarrollador de software y estudiante de sistemas con sólidos conocimientos en programación orientada a objetos, bases de datos relacionales, desarrollo móvil y ciberseguridad. Experiencia práctica construyendo servicios backend, integrando APIs y analizando datos con herramientas empresariales. Enfoque analítico y capacidad para aprender nuevas tecnologías rápidamente.
+                    </p>
+                </header>
+
+                <!-- Formación académica -->
+                <section class="mb-5">
+                    <h2 class="section-title">Formación académica</h2>
+                    <article class="education-item">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between">
+                            <div>
+                                <h3 class="item-title">Ingeniería en Sistemas Computacionales</h3>
+                                <p class="item-subtitle mb-1">Instituto Tecnológico de Celaya (TecNM)</p>
+                            </div>
+                            <span class="item-date">Agosto 2022 - Diciembre 2026</span>
+                        </div>
+                        <p class="mt-2 mb-0">
+                            Estudiante de 9° semestre. Formación sólida en estructuras de datos, programación orientada a objetos (C#, Java), bases de datos, análisis de datos,  redes de computadoras y seguridad informática.
+                        </p>
+                    </article>
+                </section>
+
+                <!-- Proyectos Destacados-->
+                <section class="mb-5">
+                    <h2 class="section-title">Proyectos Destacados</h2>
+
+                    <article class="project-item">
+                        <h3 class="item-title">MalwareBotTelegram</h3>
+                        <p class="item-subtitle mb-2">C#, .NET, Windows Background Services, APIs (VirusTotal)</p>
+                        <p class="mb-0">
+                            Desarrollo de un servicio de Linux/Windows en segundo plano para el monitoreo de telemetría del sistema, integrado con la API de VirusTotal para escaneo de amenazas y notificaciones automatizadas de alertas de seguridad mediante Telegram.
+                        </p>
+                    </article>
+
+                    <article class="project-item">
+                        <h3 class="item-title">Desarrollo Multiplataforma & Bases de Datos</h3>
+                        <p class="item-subtitle mb-2">Flutter, Dart, SQLite (sqflite)</p>
+                        <p class="mb-0">
+                            Diseño y programación de aplicaciones móviles interactivas multiplataforma. Implementación de almacenamiento local persistente utilizando SQLite, Data Access Objects (DAO) y gestión de estados para interfaces dinámicas.
+                        </p>
+                    </article>
+
+                    <article class="project-item">
+                        <h3 class="item-title">Consumo de RESTful APIs y Clientes Web</h3>
+                        <p class="item-subtitle mb-2">PHP, Apache, MySQL, cURL</p>
+                        <p class="mb-0">
+                            Construcción de scripts en PHP para interactuar con APIs externas (JSONPlaceholder, PokeAPI). Manejo eficiente de peticiones HTTP, parseo de datos JSON e integración de resultados en aplicaciones web backend.
+                        </p>
+                    </article>
+
+                    <article class="project-item">
+                        <h3 class="item-title">Prácticas de Ciberseguridad & Enumeración</h3>
+                        <p class="item-subtitle mb-2">Linux, Docker, Nmap, Wfuzz, ffuf</p>
+                        <p class="mb-0">
+                            Resolución de laboratorios controlados (ej. WhoAmI-Labs PathRead) aplicando técnicas de reconocimiento de redes, fuzzing de directorios y explotación de vulnerabilidades de inclusión de archivos locales (LFI). Documentación técnica estructurada en formato Markdown.
+                        </p>
+                    </article>
+                </section>
+
+                <!-- Competencias técnicas -->
+                <section class="mb-5">
+                    <h2 class="section-title">Competencias técnicas</h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="technology-card">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <i class="bi bi-code-slash"></i>
+                                    <h3 class="h6 fw-bold mb-0">Desarrollo y Software</h3>
+                                </div>
+                                <p class="text-secondary mb-0">
+                                    C#, Java, .NET, PHP, Flutter, Dart, POO, Consumo y pruebas de APIs (cURL, Bruno, Postman).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="technology-card">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <i class="bi bi-database-fill"></i>
+                                    <h3 class="h6 fw-bold mb-0">Bases de datos & Análisis</h3>
+                                </div>
+                                <p class="text-secondary mb-0">
+                                    PostgreSQL, MariaDB, MySQL, SQLite, Procesos ETL, Power BI, Excel Intermedio.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="technology-card">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <i class="bi bi-terminal-fill"></i>
+                                    <h3 class="h6 fw-bold mb-0">Sistemas y DevOps</h3>
+                                </div>
+                                <p class="text-secondary mb-0">
+                                    Linux (Pop!_OS), manejo intermedio de terminal, Docker (Contenedores), Git y GitHub.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="technology-card">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <i class="bi bi-shield-lock-fill"></i>
+                                    <h3 class="h6 fw-bold mb-0">Ciberseguridad básica-intermedia </h3>
+                                </div>
+                                <p class="text-secondary mb-0">
+                                    Reconocimiento de redes, escaneo (Nmap), Fuzzing web (Wfuzz, ffuf), análisis de vulnerabilidades.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
